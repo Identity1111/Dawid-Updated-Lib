@@ -1,0 +1,139 @@
+-- Gui to Lua
+-- Version: 3.2
+
+-- Instances:
+
+local Executor_UI = Instance.new("ScreenGui")
+local Container = Instance.new("Frame")
+local UICorner = Instance.new("UICorner")
+local Drop_Shadow = Instance.new("ImageLabel")
+local Execute = Instance.new("TextButton")
+local UICorner_2 = Instance.new("UICorner")
+local Cancel = Instance.new("TextButton")
+local UICorner_3 = Instance.new("UICorner")
+local TextBox = Instance.new("TextBox")
+local UICorner_4 = Instance.new("UICorner")
+local ImageLabel = Instance.new("ImageLabel")
+local TextLabel = Instance.new("TextLabel")
+local Frame = Instance.new("Frame")
+local UICorner_5 = Instance.new("UICorner")
+
+--Properties:
+
+Executor_UI.Name = "Executor_UI"
+Executor_UI.Parent = game.CoreGui
+Executor_UI.ResetOnSpawn = false
+
+Container.Name = "Container"
+Container.Parent = Executor_UI
+Container.BackgroundColor3 = Color3.fromRGB(39, 39, 39)
+Container.Position = UDim2.new(0.343272746, 0, 0.115160353, 0)
+Container.Size = UDim2.new(0, 412, 0, 343)
+Container.ZIndex = 2
+Container.Active = true
+Container.Draggable = true
+
+UICorner.Parent = Container
+
+Drop_Shadow.Name = "Drop_Shadow"
+Drop_Shadow.Parent = Container
+Drop_Shadow.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Drop_Shadow.BackgroundTransparency = 1.000
+Drop_Shadow.Position = UDim2.new(0, -35, 0, -35)
+Drop_Shadow.Size = UDim2.new(1, 70, 1, 70)
+Drop_Shadow.Image = "rbxassetid://1113384364"
+Drop_Shadow.ImageTransparency = 0.500
+Drop_Shadow.ScaleType = Enum.ScaleType.Slice
+Drop_Shadow.SliceCenter = Rect.new(50, 50, 50, 50)
+
+Execute.Name = "Execute"
+Execute.Parent = Container
+Execute.BackgroundColor3 = Color3.fromRGB(26, 115, 232)
+Execute.Position = UDim2.new(0.681221664, 0, 0.868804634, 0)
+Execute.Size = UDim2.new(0, 120, 0, 35)
+Execute.ZIndex = 2
+Execute.Font = Enum.Font.Gotham
+Execute.Text = "Run Code"
+Execute.TextColor3 = Color3.fromRGB(255, 255, 255)
+Execute.TextSize = 18.000
+Execute.MouseButton1Click:Connect(function()
+	loadstring(TextBox.Text)()
+end)
+
+UICorner_2.CornerRadius = UDim.new(0, 4)
+UICorner_2.Parent = Execute
+
+Cancel.Name = "Cancel"
+Cancel.Parent = Container
+Cancel.BackgroundColor3 = Color3.fromRGB(26, 115, 232)
+Cancel.Position = UDim2.new(0.0258818865, 0, 0.868804634, 0)
+Cancel.Size = UDim2.new(0, 120, 0, 35)
+Cancel.ZIndex = 2
+Cancel.Font = Enum.Font.Gotham
+Cancel.Text = "Exit"
+Cancel.TextColor3 = Color3.fromRGB(255, 255, 255)
+Cancel.TextSize = 18.000
+Cancel.MouseButton1Click:Connect(function()
+	Executor_UI:Destroy()
+	print("Axolotl Executor Has Closed.")
+end)
+
+UICorner_3.CornerRadius = UDim.new(0, 4)
+UICorner_3.Parent = Cancel
+
+TextBox.Parent = Container
+TextBox.BackgroundColor3 = Color3.fromRGB(26, 115, 232)
+TextBox.BorderColor3 = Color3.fromRGB(26, 115, 232)
+TextBox.BorderSizePixel = 0
+TextBox.Position = UDim2.new(0.0533980578, 0, 0.326530606, 0)
+TextBox.Size = UDim2.new(0, 378, 0, 45)
+TextBox.ZIndex = 4
+TextBox.ClearTextOnFocus = false
+TextBox.Font = Enum.Font.Gotham
+TextBox.PlaceholderColor3 = Color3.fromRGB(226, 226, 226)
+TextBox.PlaceholderText = "Loadstring"
+TextBox.Text = ""
+TextBox.TextColor3 = Color3.fromRGB(255, 255, 255)
+TextBox.TextSize = 16.000
+TextBox.TextXAlignment = Enum.TextXAlignment.Left
+
+UICorner_4.CornerRadius = UDim.new(0, 5)
+UICorner_4.Parent = TextBox
+
+ImageLabel.Parent = Container
+ImageLabel.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+ImageLabel.BackgroundTransparency = 1.000
+ImageLabel.Position = UDim2.new(0.024271844, 0, 0.0291545205, 0)
+ImageLabel.Size = UDim2.new(0, 46, 0, 46)
+ImageLabel.ZIndex = 3
+ImageLabel.Image = "rbxassetid://6958669658"
+
+TextLabel.Parent = ImageLabel
+TextLabel.AnchorPoint = Vector2.new(0.5, 0.5)
+TextLabel.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+TextLabel.BackgroundTransparency = 1.000
+TextLabel.Position = UDim2.new(3.56521726, 0, 0.5, 0)
+TextLabel.Size = UDim2.new(0, 200, 0, 14)
+TextLabel.ZIndex = 3
+TextLabel.Font = Enum.Font.Gotham
+TextLabel.Text = "Axolotl Executor"
+TextLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
+TextLabel.TextSize = 18.000
+TextLabel.TextXAlignment = Enum.TextXAlignment.Left
+
+Frame.Parent = Container
+Frame.BackgroundColor3 = Color3.fromRGB(26, 115, 232)
+Frame.Position = UDim2.new(0.024271844, 0, 0.326530606, 0)
+Frame.Size = UDim2.new(0, 74, 0, 45)
+Frame.ZIndex = 3
+
+UICorner_5.CornerRadius = UDim.new(0, 5)
+UICorner_5.Parent = Frame
+
+print("Axolotl Executor Is Currently Running!")
+
+game.Players.LocalPlayer:GetMouse().KeyDown:Connect(function(key)
+    if key:lower() == "v" then
+        Executor_UI.Enabled = not Executor_UI.Enabled
+    end
+end)
